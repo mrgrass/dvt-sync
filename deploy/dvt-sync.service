@@ -1,0 +1,23 @@
+# Example systemd unit. Adapt INSTALL_DIR (/opt/dvt-sync below) and User to your setup:
+# the service only needs write access to its own folder.
+[Unit]
+Description=dvt-sync: Philips VoiceTracer recorder sync (presence-triggered download)
+After=network-online.target avahi-daemon.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/dvt-sync
+ExecStart=/opt/dvt-sync/.venv/bin/dvtsync --config /opt/dvt-sync/config.toml run
+Restart=always
+RestartSec=10
+User=dvt-sync
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/opt/dvt-sync
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

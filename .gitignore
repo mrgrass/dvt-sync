@@ -1,0 +1,14 @@
+.venv/
+state/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.part
+# personal data: audio and device metadata
+recordings/
+# firmware images (Philips proprietary) and extraction output
+*.UPG
+*.upg
+out/
+# local configuration (see config.example.toml)
+config.toml

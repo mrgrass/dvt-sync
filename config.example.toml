@@ -1,0 +1,31 @@
+# dvt-sync configuration. Copy to config.toml and edit.
+# Relative paths are resolved against this file. Unknown keys are rejected.
+# Every key is optional: the values below are the defaults.
+
+# --- device ---
+host = "dvt.local"
+port = 81
+
+# --- storage ---
+recordings_dir = "recordings"   # audio + <file>.json sidecars: the pipeline inbox
+state_dir = "state"             # SQLite manifest + lock file
+
+# --- presence detection ---
+# poll_interval = 15.0          # s between probes while the recorder is absent
+# present_interval = 120.0      # s between presence re-checks while it is present
+# connect_timeout = 4.0
+# present_confirmations = 2     # consecutive good probes before "arrived"
+# absent_confirmations = 3      # consecutive bad probes before "left"
+
+# --- sync ---
+# rescan_interval = 300.0       # s between file-list scans while present and idle
+# handshake_wait = 3.0          # s to let the connection handshake pass
+# command_timeout = 10.0
+# list_quiet = 3.0              # s of silence that ends a GetFileList burst
+# stall_timeout = 30.0          # s without data before a download is considered failed
+# inter_file_pause = 2.0        # s between files (the device is fragile)
+# max_attempts = 5              # attempts per file before it is marked failed
+# min_free_bytes = 500000000    # refuse to download below this much free disk space
+# failure_cooldown = 120.0      # s to leave the device alone after any failure
+# backoff_base = 60.0           # per-file retry delay = base * 2**(attempts-1) ...
+# backoff_max = 3600.0          # ... capped at this value
