@@ -17,6 +17,7 @@ dependencies = ["websockets>=13"]
 
 [dependency-groups]
 dev = [
+    "pre-commit>=4.7.0",
     "pytest>=8",
     "pytest-asyncio>=0.24",
     "ruff>=0.17.5",

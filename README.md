@@ -1,5 +1,7 @@
 # dvt-sync
 
+[![CI](https://github.com/mrgrass/dvt-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/mrgrass/dvt-sync/actions/workflows/ci.yml)
+
 Automatic Wi‑Fi sync for the **Philips VoiceTracer DVT6110** voice recorder.
 
 A small service (designed for a Raspberry Pi or any always-on Linux box) watches the network for
@@ -42,9 +44,12 @@ journalctl -fu dvt-sync
 
 ## Development
 ```sh
-uv run pytest       # tests run against a fake recorder (tests/fake_device.py), no hardware needed
-uv run ruff check . # lint
+uv sync                     # includes the dev tools (pytest, ruff, pre-commit)
+uv run pre-commit install   # run lint and file checks on every commit
+uv run pytest               # tests run against a fake recorder (tests/fake_device.py), no hardware needed
+uv run ruff check .         # lint
 ```
+CI (GitHub Actions) runs ruff and the tests on Python 3.11–3.13 for pushes to `main` and `develop` and for every pull request.
 
 ## Repository layout
 | Path | Contents |
@@ -59,6 +64,7 @@ uv run ruff check . # lint
 - [docs/protocol.md](docs/protocol.md): the DVT6110 Wi‑Fi protocol, firmware analysis, device verification
 - [docs/design.md](docs/design.md): contract with the pipeline, robustness choices, open points
 - [docs/roadmap.md](docs/roadmap.md): next steps and open questions
+- [CONTRIBUTING.md](CONTRIBUTING.md): branching model (git flow) and development workflow
 
 ## Acknowledgements
 The protocol was first described by
